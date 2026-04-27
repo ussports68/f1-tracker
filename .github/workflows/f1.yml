@@ -23,3 +23,10 @@ jobs:
 
       - name: Run tracker
         run: python tracker.py
+      - name: Commit status file
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add status.json
+          git commit -m "Update status" || echo "No changes"
+          git push
